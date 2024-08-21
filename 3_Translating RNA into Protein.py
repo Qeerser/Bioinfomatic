@@ -1,7 +1,11 @@
-input_string = input("Enter your input: ")
+input_string = ""
+with open('input.txt', 'r') as files:
+    # Read the entire file
+    input_string = files.read()
+
 mapping = {}
 
-with open("test.txt", 'r') as file:
+with open('text.txt', 'r') as file:
     for line in file:
         words = line.split()
         mapping.update({words[i]: words[i + 1] for i in range(0, len(words), 2)})
@@ -15,4 +19,5 @@ while index < len(input_string):
     result += word
     index += 3
 
-print(result)
+with open("output.txt", 'w') as file:
+    file.write(result)
